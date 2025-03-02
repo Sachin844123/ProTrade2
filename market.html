@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function StockMarket() {
+    const [stocks, setStocks] = React.useState([
+        { name: "TCS", price: 3500, prevPrice: 3500 },
+        { name: "Reliance", price: 2700, prevPrice: 2700 },
+        { name: "Infosys", price: 1600, prevPrice: 1600 },
+        { name: "HDFC Bank", price: 1500, prevPrice: 1500 },
+        { name: "ICICI Bank", price: 930, prevPrice: 930 },
+        { name: "Tata Motors", price: 670, prevPrice: 670 },
+        { name: "SBI", price: 600, prevPrice: 600 },
+        { name: "HUL", price: 2500, prevPrice: 2500 },
+        { name: "Bharti Airtel", price: 1150, prevPrice: 1150 },
+        { name: "Asian Paints", price: 2800, prevPrice: 2800 },
+        { name: "ITC", price: 420, prevPrice: 420 },
+        { name: "L&T", price: 3200, prevPrice: 3200 },
+        { name: "Axis Bank", price: 1020, prevPrice: 1020 },
+        { name: "Maruti Suzuki", price: 10500, prevPrice: 10500 },
+        { name: "Wipro", price: 450, prevPrice: 450 },
+        { name: "Sun Pharma", price: 1400, prevPrice: 1400 },
+        { name: "Bajaj Finance", price: 6800, prevPrice: 6800 },
+        { name: "NTPC", price: 280, prevPrice: 280 },
+        { name: "Power Grid", price: 240, prevPrice: 240 },
+        { name: "Tech Mahindra", price: 1250, prevPrice: 1250 },
+        { name: "Hero MotoCorp", price: 3100, prevPrice: 3100 },
+        { name: "Titan", price: 3400, prevPrice: 3400 },
+        { name: "Nestle India", price: 24500, prevPrice: 24500 },
+        { name: "Coal India", price: 320, prevPrice: 320 },
+        { name: "UltraTech Cement", price: 8900, prevPrice: 8900 },
+        { name: "Dr Reddy's", price: 5600, prevPrice: 5600 },
+        { name: "Adani Ports", price: 850, prevPrice: 850 },
+        { name: "Grasim", price: 2100, prevPrice: 2100 },
+        { name: "JSW Steel", price: 840, prevPrice: 840 },
+        { name: "Tata Steel", price: 130, prevPrice: 130 },
+        { name: "M&M", price: 1650, prevPrice: 1650 },
+        { name: "Bajaj Auto", price: 7200, prevPrice: 7200 },
+        { name: "Cipla", price: 1180, prevPrice: 1180 },
+        { name: "BPCL", price: 460, prevPrice: 460 },
+        { name: "IndusInd Bank", price: 1480, prevPrice: 1480 },
+        { name: "Britannia", price: 4600, prevPrice: 4600 },
+        { name: "ONGC", price: 210, prevPrice: 210 },
+        { name: "Eicher Motors", price: 3850, prevPrice: 3850 },
+        { name: "Tata Consumer", price: 960, prevPrice: 960 },
+        { name: "Hindalco", price: 520, prevPrice: 520 }
+    ]);
+
+            const [searchTerm, setSearchTerm] = React.useState('');
+            const [wallet, setWallet] = React.useState(() => Number(localStorage.getItem('wallet')) || 100000);
+            const [selectedStock, setSelectedStock] = React.useState(null);
+            const [quantity, setQuantity] = React.useState(1);
+            const [portfolio, setPortfolio] = React.useState(() => JSON.parse(localStorage.getItem('portfolio')) || []);
+            const [watchlist, setWatchlist] = React.useState(() => JSON.parse(localStorage.getItem('watchlist')) || []);
+
+            React.useEffect(() => {
+                const timer = setInterval(updatePrices, 2000);
+                return () => clearInterval(timer);
+            }, []);
+
+            React.useEffect(() => {
+                localStorage.setItem('wallet', wallet);
+                localStorage.setItem('portfolio', JSON.stringify(portfolio));
+                localStorage.setItem('watchlist', JSON.stringify(watchlist));
+            }, [wallet, portfolio, watchlist]);
+
+            const updatePrices = () => {
+                setStocks(prevStocks => 
+                    prevStocks.map(stock => {
+                        const prevPrice = stock.price;
+                        let change = 0;
+                        
+                        if (stock.price < 1000) change = Math.random() * 10;
+                        else if (stock.price < 2000) change = Math.random() * 20;
+                        else if (stock.price < 5000) change = Math.random() * 50;
+                        else change = Math.random() * 100;
+                        
+                        const direction = Math.random() < 0.5 ? -1 : 1;
+                        return {
+                            ...stock,
+                            prevPrice,
+                            price: Math.max(stock.price + direction * change, 1)
+                        };
+                    })
+                );
+            };
+
+            const buyStock = (stock) => {
+                const totalCost = stock.price * quantity;
+                if (totalCost > wallet) {
+                    alert('Insufficient funds!');
+                    return;
+                }
+
+                setWallet(prev => prev - totalCost);
+                setPortfolio(prev => {
+                    const existingPosition = prev.find(p => p.name === stock.name);
+                    if (existingPosition) {
+                        return prev.map(p => 
+                            p.name === stock.name 
+                                ? { ...p, quantity: p.quantity + quantity, avgPrice: (p.avgPrice * p.quantity + stock.price * quantity) / (p.quantity + quantity) }
+                                : p
+                        );
+                    }
+                    return [...prev, { name: stock.name, quantity, avgPrice: stock.price }];
+                });
+            };
+
+            const sellStock = (stock) => {
+                const position = portfolio.find(p => p.name === stock.name);
+                if (!position || position.quantity < quantity) {
+                    alert('Insufficient shares!');
+                    return;
+                }
+
+                const saleValue = stock.price * quantity;
+                setWallet(prev => prev + saleValue);
+                setPortfolio(prev => {
+                    const updated = prev.map(p => 
+                        p.name === stock.name 
+                            ? { ...p, quantity: p.quantity - quantity }
+                            : p
+                    ).filter(p => p.quantity > 0);
+                    return updated;
+                });
+            };
+
+            const toggleWatchlist = (stockName) => {
+                setWatchlist(prev => 
+                    prev.includes(stockName)
+                        ? prev.filter(name => name !== stockName)
+                        : [...prev, stockName]
+                );
+            };
+
+            const filteredStocks = stocks.filter(stock => 
+                stock.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            return (
+                <div className="market-container w-[90%] max-w-[1200px] mx-auto my-8 px-4">
+                    <h1 className="text-4xl font-bold text-slate-800 mb-6">Market</h1>
+                    
+                    <div className="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white p-6 rounded-xl shadow-lg mb-8">
+                        <h2 className="text-lg opacity-90 mb-1">Wallet Balance</h2>
+                        <p className="text-3xl font-semibold">₹{wallet.toLocaleString('en-IN', { maximumFractionDigits: 2 })}</p>
+                    </div>
+
+                    <input 
+                        type="text"
+                        placeholder="Search stocks..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full px-6 py-4 text-lg border-2 border-slate-200 rounded-xl mb-8 focus:outline-none focus:border-indigo-500 transition-colors shadow-sm"
+                    />
+
+                    <div className="space-y-4">
+                        {filteredStocks.map(stock => (
+                            <div 
+                                key={stock.name}
+                                className={`bg-white rounded-xl border border-slate-200 p-6 shadow-sm transition-all duration-200
+                                    ${selectedStock?.name === stock.name ? 'ring-2 ring-indigo-500' : 'hover:shadow-md'}`}
+                                onClick={() => setSelectedStock(stock)}
+                            >
+                                <div className="flex justify-between items-center">
+                                    <div className="flex items-center space-x-4">
+                                        <h3 className="text-xl font-semibold text-slate-800">{stock.name}</h3>
+                                        {watchlist.includes(stock.name) && (
+                                            <span className="text-blue-500">★</span>
+                                        )}
+                                    </div>
+                                    
+                                    <div className="flex items-center space-x-6">
+                                        <span className={`text-lg font-medium ${
+                                            stock.price > stock.prevPrice ? 'text-green-500' : 'text-red-500'
+                                        }`}>
+                                            ₹{stock.price.toFixed(2)}
+                                        </span>
+
+                                        {selectedStock?.name === stock.name && (
+                                            <div className="flex items-center space-x-3">
+                                                <input
+                                                    type="number"
+                                                    min="1"
+                                                    value={quantity}
+                                                    onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                                                    className="w-24 px-3 py-2 border-2 border-slate-200 rounded-lg focus:outline-none focus:border-indigo-500"
+                                                    onClick={e => e.stopPropagation()}
+                                                />
+                                                <button 
+                                                    onClick={e => {
+                                                        e.stopPropagation();
+                                                        buyStock(stock);
+                                                    }}
+                                                    className="px-6 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+                                                >
+                                                    Buy
+                                                </button>
+                                                <button 
+                                                    onClick={e => {
+                                                        e.stopPropagation();
+                                                        sellStock(stock);
+                                                    }}
+                                                    className="px-6 py-2 border-2 border-red-500 text-red-500 font-medium rounded-lg hover:bg-red-50 transition-colors"
+                                                >
+                                                    Sell
+                                                </button>
+                                                <button
+                                                    onClick={e => {
+                                                        e.stopPropagation();
+                                                        toggleWatchlist(stock.name);
+                                                    }}
+                                                    className="px-6 py-2 border-2 border-slate-200 text-slate-600 font-medium rounded-lg hover:bg-slate-50 transition-colors"
+                                                >
+                                                    {watchlist.includes(stock.name) ? 'Unwatch' : 'Watch'}
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {selectedStock?.name === stock.name && portfolio.find(p => p.name === stock.name) && (
+                                    <div className="mt-4 p-4 bg-slate-50 rounded-lg">
+                                        <div className="text-slate-600">
+                                            Your position: {portfolio.find(p => p.name === stock.name).quantity} shares
+                                            @ avg. ₹{portfolio.find(p => p.name === stock.name).avgPrice.toFixed(2)}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<StockMarket />);
+    </script>
+</body>
+</html>

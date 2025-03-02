@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ProTrade - Your ultimate virtual trading platform with real-time market data">
+  <meta name="keywords" content="trading, stocks, virtual trading, finance, investment">
+  <title>ProTrade - Your Ultimate Trading Companion</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-logo">
+          <a href="index.html">
+            <h2><i class="fas fa-chart-line"></i> ProTrade</h2>
+          </a>
+        </div>
+        
+        <div class="nav-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="market.html"><i class="fas fa-chart-bar"></i> Market</a></li>
+          <li><a href="ww.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+          <li><a href="watchlist.html"><i class="far fa-star"></i> Watchlist</a></li>
+          <li><a href="news.html"><i class="far fa-newspaper"></i> News</a></li>
+          <li><a href="learn.html"><i class="fas fa-graduation-cap"></i> Learn</a></li>
+        </ul>
+        
+        <div class="nav-buttons">
+          <button class="btn btn-outline" onclick="location.href='http://localhost/login_register/register.html'">Sign Up</button>
+          <button class="btn btn-primary" onclick="location.href='http://localhost/login_register/index.html'">Log In</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-left">
+          <img src="Neostox-image-banner.png" alt="Trading Platform Illustration">
+        </div>
+        <div class="hero-right">
+          <h1>Master The Market with <span class="highlight">ProTrade</span></h1>
+          <p>Experience the thrill of stock trading without financial risk. Our platform offers virtual trading with real-time market data, powerful analytics, and educational resources.</p>
+          
+          <div class="stock-ticker">
+            <div class="ticker-wrap">
+              <div class="ticker">
+                <div class="ticker-item up"><i class="fas fa-arrow-up"></i> RELIANCE: ₹2,500.00 (+1.50%)</div>
+                <div class="ticker-item down"><i class="fas fa-arrow-down"></i> TCS: ₹3,600.75 (-0.75%)</div>
+                <div class="ticker-item up"><i class="fas fa-arrow-up"></i> INFY: ₹1,550.85 (+0.85%)</div>
+                <div class="ticker-item up"><i class="fas fa-arrow-up"></i> HDFC BANK: ₹1,620.50 (+1.20%)</div>
+                <div class="ticker-item down"><i class="fas fa-arrow-down"></i> ICICI BANK: ₹765.30 (-0.45%)</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hero-cta">
+            <button class="btn btn-large btn-primary" onclick="location.href='http://localhost/login_register/register.html'">
+              Get Started for Free <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-large btn-outline watch-demo">
+              <i class="fas fa-play-circle"></i> Watch Demo
+            </button>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h3>15K+</h3>
+              <p>Active Traders</p>
+            </div>
+            <div class="stat-item">
+              <h3>₹100Cr+</h3>
+              <p>Virtual Assets</p>
+            </div>
+            <div class="stat-item">
+              <h3>500+</h3>
+              <p>Stocks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose ProTrade</h2>
+        <p>Experience advanced trading features designed for both beginners and professionals</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Real-Time Data</h3>
+          <p>Access live market data with minimal delay to make informed trading decisions</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>AI Insights</h3>
+          <p>Get AI-powered stock recommendations and market analysis</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Learning Resources</h3>
+          <p>Access tutorials, webinars, and articles to improve your trading strategies</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Risk-Free</h3>
+          <p>Trade with virtual currency and practice without financial risk</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Section -->
+  <section class="market-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Explore The Market</h2>
+        <p>Stay updated with the latest market trends and opportunities</p>
+      </div>
+      
+      <div class="market-grid">
+        <div class="market-card">
+          <div class="video-container">
+            <video autoplay loop muted playsinline>
+              <source src="stock.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="overlay">
+              <h3>Market Analysis</h3>
+              <p>Discover emerging trends and investment opportunities</p>
+              <a href="market.html" class="btn btn-outline btn-sm">Learn More</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="market-card">
+          <div class="market-content" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('landing.png')">
+            <h3>Top Performers</h3>
+            <div class="stock-list">
+              <div class="stock-item up">
+                <div class="stock-name">HDFC Bank</div>
+                <div class="stock-price">₹1,620.50</div>
+                <div class="stock-change">+1.20%</div>
+              </div>
+              <div class="stock-item up">
+                <div class="stock-name">Reliance</div>
+                <div class="stock-price">₹2,500.00</div>
+                <div class="stock-change">+1.50%</div>
+              </div>
+              <div class="stock-item up">
+                <div class="stock-name">Infosys</div>
+                <div class="stock-price">₹1,550.85</div>
+                <div class="stock-change">+0.85%</div>
+              </div>
+              <div class="stock-item up">
+                <div class="stock-name">TCS</div>
+                <div class="stock-price">₹3,600.75</div>
+                <div class="stock-change">+0.75%</div>
+              </div>
+            </div>
+            <a href="watchlist.html" class="btn btn-primary btn-sm">View All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Users Say</h2>
+        <p>Join thousands of satisfied traders who have improved their trading skills with ProTrade</p>
+      </div>
+      
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"ProTrade helped me understand market dynamics without risking my savings. The platform is intuitive and the educational resources are excellent."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/50/50" alt="User Avatar">
+            <div>
+              <h4>Rahul Sharma</h4>
+              <p>Software Engineer</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="testimonial-text">"The real-time data and analytics tools are impressive. I've been using ProTrade for 6 months and my trading confidence has significantly improved."</p>
+          <div class="testimonial-author">
+            <img src="/api/placeholder/50/50" alt="User Avatar">
+            <div>
+              <h4>Priya Patel</h4>
+              <p>Finance Student</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>The talented minds behind ProTrade's innovation and development</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="ayush.jpg" alt="Ayush">
+            <div class="social-links">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/Ayush200629"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/ayush_20069?igsh=MXBxaGZwanU0OGxnbw=="><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Ayush</h3>
+            <p class="member-role">Lead Developer</p>
+            <p class="member-bio">Passionate about creating intuitive financial technologies and democratizing access to market information.</p>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <div class="member-image">
+            <img src="sachin.jpg" alt="Sachin">
+            <div class="social-links">
+              <a href="https://x.com/Sachin_S_001?t=zTsd-T9c2LizAvl3biUmRg&s=09"><i class="fab fa-twitter"></i></a>
+              <a href="https://github.com/Sachin844123"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/__sachin__84/"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="member-info">
+            <h3>Sachin</h3>
+            <p class="member-role">UX/UI Designer</p>
+            <p class="member-bio">Focused on creating seamless user experiences that make complex trading concepts accessible to everyone.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Start Your Trading Journey?</h2>
+        <p>Join ProTrade today and get access to powerful tools, real-time data, and a risk-free environment to master your trading skills.</p>
+        <button class="btn btn-large btn-primary" onclick="location.href='http://localhost/login_register/register.html'">
+          Create Free Account <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-about">
+            <h3><i class="fas fa-chart-line"></i> ProTrade</h3>
+            <p>Your ultimate platform for learning stock trading with virtual money. Practice, learn, and master the art of trading without financial risk.</p>
+            <div class="social-icons">
+              <a href="https://x.com/Sachin_S_001?t=zTsd-T9c2LizAvl3biUmRg&s=09"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/__sachin__84/"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="careers.html">Careers</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="press.html">Press</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="learn.html">Learning Center</a></li>
+              <li><a href="webinars.html">Webinars</a></li>
+              <li><a href="api.html">API</a></li>
+              <li><a href="glossary.html">Glossary</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="help.html">Help Center</a></li>
+              <li><a href="faq.html">FAQs</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="community.html">Community</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-newsletter">
+            <h4>Stay Updated</h4>
+            <p>Subscribe to our newsletter for the latest market insights and platform updates.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address" required>
+              <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <p>&copy; 2025 ProTrade. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="terms.html">Terms of Service</a>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="disclaimer.html">Disclaimer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  
+  <!-- Modal for Video Demo -->
+  <div id="demo-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="video-wrapper">
+        <iframe width="560" height="315" src="about:blank" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile Menu Toggle
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      mobileMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+      
+      // Back to Top Button
+      const backToTopButton = document.getElementById('back-to-top');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.add('show');
+        } else {
+          backToTopButton.classList.remove('show');
+        }
+      });
+      
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Demo Video Modal
+      const modal = document.getElementById('demo-modal');
+      const watchDemoBtn = document.querySelector('.watch-demo');
+      const closeModal = document.querySelector('.close-modal');
+      const iframe = document.querySelector('.video-wrapper iframe');
+      
+      watchDemoBtn.addEventListener('click', function() {
+        modal.style.display = 'flex';
+        // Set video URL only when modal is opened (privacy enhancement)
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/dQw4w9WgXcQ');
+      });
+      
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        // Reset iframe src when closing
+        iframe.setAttribute('src', 'about:blank');
+      });
+      
+      window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+          iframe.setAttribute('src', 'about:blank');
+        }
+      });
+      
+      // Simulate stock ticker movement
+      const tickerItems = document.querySelectorAll('.ticker-item');
+      
+      setInterval(function() {
+        tickerItems.forEach(item => {
+          const isUp = Math.random() > 0.5;
+          if (isUp) {
+            item.classList.add('up');
+            item.classList.remove('down');
+            item.querySelector('i').className = 'fas fa-arrow-up';
+          } else {
+            item.classList.add('down');
+            item.classList.remove('up');
+            item.querySelector('i').className = 'fas fa-arrow-down';
+          }
+          
+          // Update price and percentage randomly for demo
+          const priceChange = (Math.random() * 2).toFixed(2);
+          const percentChange = (Math.random() * 2).toFixed(2);
+          
+          // Get current stock info
+          const stockInfo = item.textContent.split(':')[0];
+          
+          if (isUp) {
+            item.innerHTML = `<i class="fas fa-arrow-up"></i> ${stockInfo}: ₹${priceChange} (+${percentChange}%)`;
+          } else {
+            item.innerHTML = `<i class="fas fa-arrow-down"></i> ${stockInfo}: ₹${priceChange} (-${percentChange}%)`;
+          }
+        });
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
